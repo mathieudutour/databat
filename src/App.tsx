@@ -17,6 +17,8 @@ import {
 import { AddressInput } from "./AddressInput"
 import { QuiSommesNous } from "./modals/qui-sommes-nous"
 import { CommentCaMarche } from "./modals/comment-ca-marche"
+import { Toiture } from "./modals/toiture"
+import { Dot } from "./Dot"
 
 import "./App.css"
 
@@ -30,7 +32,13 @@ function App() {
   >(null)
 
   const [modal, setModal] = useState<
-    "comment-ca-marche" | "qui-sommes-nous" | null
+    | "comment-ca-marche"
+    | "qui-sommes-nous"
+    | "toiture"
+    | "murs"
+    | "plancher"
+    | "chauffage"
+    | null
   >(null)
 
   const closeModal = () => setModal(null)
@@ -135,12 +143,13 @@ function App() {
             {!logementType ? null : logementType === "appartement" ? (
               "L'algorithme n'est pas encore prêt pour les appartements. Inscrivez vous à la newsletter pour être informé en premier!"
             ) : (
-              <div>
+              <div style={{ position: "relative" }}>
                 <Image
                   src={require("./images/maison.jpg").default}
                   alt="maison"
                   fluid
                 />
+                <Dot left="20%" top="21%" onClick={() => setModal("toiture")} />
               </div>
             )}
           </Col>
@@ -149,6 +158,8 @@ function App() {
       <Modal show={modal !== null} onHide={closeModal} size="lg">
         {modal === "comment-ca-marche" ? (
           <CommentCaMarche />
+        ) : modal === "toiture" ? (
+          <Toiture />
         ) : (
           <QuiSommesNous />
         )}
