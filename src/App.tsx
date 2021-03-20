@@ -9,8 +9,15 @@ import {
   InputGroup,
   FormControl,
   Spinner,
+  Navbar,
+  Nav,
+  Modal,
+  Image,
 } from "react-bootstrap"
 import { AddressInput } from "./AddressInput"
+import { QuiSommesNous } from "./modals/qui-sommes-nous"
+import { CommentCaMarche } from "./modals/comment-ca-marche"
+
 import "./App.css"
 
 function App() {
@@ -22,8 +29,33 @@ function App() {
     "maison" | "appartement" | null
   >(null)
 
+  const [modal, setModal] = useState<
+    "comment-ca-marche" | "qui-sommes-nous" | null
+  >(null)
+
+  const closeModal = () => setModal(null)
+
   return (
     <div className="App">
+      <Navbar bg="light">
+        <Container>
+          <Navbar.Brand href="#home">FrEnerG</Navbar.Brand>
+          <Navbar.Toggle aria-controls="basic-navbar-nav" />
+          <Navbar.Collapse
+            className="justify-content-end"
+            id="basic-navbar-nav"
+          >
+            <Nav>
+              <Nav.Link onClick={() => setModal("comment-ca-marche")}>
+                Comment ça marche?
+              </Nav.Link>
+              <Nav.Link onClick={() => setModal("qui-sommes-nous")}>
+                Qui sommes nous?
+              </Nav.Link>
+            </Nav>
+          </Navbar.Collapse>
+        </Container>
+      </Navbar>
       <Container style={{ marginTop: "1rem" }}>
         <Row>
           <Col md={6} xs={12}>
@@ -65,15 +97,23 @@ function App() {
                   ) : (
                     <AddressInput onSelect={setAddress} />
                   )}
-                  <Form.Group>
-                    <Form.Label>Surface</Form.Label>
-                    <InputGroup>
-                      <FormControl type="number" aria-describedby="m2" />
-                      <InputGroup.Append>
-                        <InputGroup.Text id="m2">m²</InputGroup.Text>
-                      </InputGroup.Append>
-                    </InputGroup>
-                  </Form.Group>
+                  <Form.Row>
+                    <Form.Group as={Col}>
+                      <Form.Label>Surface habitable</Form.Label>
+                      <InputGroup>
+                        <FormControl type="number" aria-describedby="m2" />
+                        <InputGroup.Append>
+                          <InputGroup.Text id="m2">m²</InputGroup.Text>
+                        </InputGroup.Append>
+                      </InputGroup>
+                    </Form.Group>
+                    <Form.Group as={Col}>
+                      <Form.Label>Année de construction</Form.Label>
+                      <InputGroup>
+                        <FormControl type="number" />
+                      </InputGroup>
+                    </Form.Group>
+                  </Form.Row>
                 </Form>
               </Card.Body>
             </Card>
@@ -96,15 +136,23 @@ function App() {
               "L'algorithme n'est pas encore prêt pour les appartements. Inscrivez vous à la newsletter pour être informé en premier!"
             ) : (
               <div>
-                <img
+                <Image
                   src={require("./images/maison.jpg").default}
                   alt="maison"
+                  fluid
                 />
               </div>
             )}
           </Col>
         </Row>
       </Container>
+      <Modal show={modal !== null} onHide={closeModal} size="lg">
+        {modal === "comment-ca-marche" ? (
+          <CommentCaMarche />
+        ) : (
+          <QuiSommesNous />
+        )}
+      </Modal>
     </div>
   )
 }
