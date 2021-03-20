@@ -35,7 +35,13 @@ function App() {
                     border={logementType === "maison" ? "primary" : undefined}
                     onClick={() => setLogementType("maison")}
                   >
-                    <Card.Body>Maison</Card.Body>
+                    <Card.Body>
+                      <Card.Img
+                        variant="top"
+                        src={require("./images/maison.png").default}
+                      />
+                      Maison
+                    </Card.Body>
                   </Card>
                   <Card
                     border={
@@ -43,7 +49,13 @@ function App() {
                     }
                     onClick={() => setLogementType("appartement")}
                   >
-                    <Card.Body>Appartement</Card.Body>
+                    <Card.Body>
+                      <Card.Img
+                        variant="top"
+                        src={require("./images/appartement.png").default}
+                      />
+                      Appartement
+                    </Card.Body>
                   </Card>
                 </CardDeck>
 
@@ -68,11 +80,11 @@ function App() {
             <Card style={{ marginTop: "1rem" }}>
               <Card.Body>
                 <Card.Title>Recommendations</Card.Title>
-                <Card.Text>
+                <Card.Subtitle className="mb-2 text-muted">
                   Plus vous renseignerez d'informations (sur l'illustration à
                   droite), plus les recommendations seront précises et
                   appropriées.
-                </Card.Text>
+                </Card.Subtitle>
                 <Spinner animation="border" role="status">
                   <span className="sr-only">Loading...</span>
                 </Spinner>
@@ -84,7 +96,10 @@ function App() {
               "L'algorithme n'est pas encore prêt pour les appartements. Inscrivez vous à la newsletter pour être informé en premier!"
             ) : (
               <div>
-                <img src={require("./maison.jpg").default} />
+                <img
+                  src={require("./images/maison.jpg").default}
+                  alt="maison"
+                />
               </div>
             )}
           </Col>
