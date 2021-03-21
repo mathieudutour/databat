@@ -231,6 +231,36 @@ function App() {
           </Col>
         </Row>
       </Container>
+      <footer
+        className="bg-light text-center text-muted"
+        style={{ marginTop: "3rem", padding: "2rem" }}
+      >
+        <p>
+          Les recommendations fournies par FrEnerG sont à vertue pédagogique et
+          ne remplacent en aucun cas l'expertise des conseillers{" "}
+          <a
+            href="https://www.faire.gouv.fr/"
+            target="_blank"
+            rel="noreferrer"
+            className="text-muted"
+          >
+            FAIRE
+          </a>
+          .
+        </p>
+        <p>
+          Projet FrEnerG ᐧ{" "}
+          <a
+            href="https://databat.ademe.fr/"
+            target="_blank"
+            rel="noreferrer"
+            className="text-muted"
+          >
+            Concours DataBat 2021
+          </a>
+        </p>
+        <p>Sources : ADEME, données Tremi ADEME, données Simul’Aid€s</p>
+      </footer>
       <Modal show={modal !== null} onHide={closeModal} size="lg">
         {modalToShow === "comment-ca-marche" ? (
           <CommentCaMarche />
