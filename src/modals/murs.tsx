@@ -1,4 +1,4 @@
-import { Modal, Form, FormControl } from "react-bootstrap"
+import { Modal, Form, FormControl, Image } from "react-bootstrap"
 import type { useMursState } from "../useAppState"
 
 export function Murs(props: { state: ReturnType<typeof useMursState> }) {
@@ -7,7 +7,13 @@ export function Murs(props: { state: ReturnType<typeof useMursState> }) {
   return (
     <>
       <Modal.Header closeButton>
-        <Modal.Title>Murs</Modal.Title>
+        <Modal.Title>
+          <Image
+            src={require("../images/wall.png").default}
+            style={{ width: 30, marginTop: -5, marginRight: "1rem" }}
+          />
+          Murs
+        </Modal.Title>
       </Modal.Header>
       <Modal.Body>
         <Form style={{ marginTop: "1rem" }}>

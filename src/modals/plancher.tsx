@@ -1,4 +1,4 @@
-import { Modal, Form, FormControl, InputGroup } from "react-bootstrap"
+import { Modal, Form, FormControl, InputGroup, Image } from "react-bootstrap"
 import type { usePlancherState } from "../useAppState"
 
 export function Plancher(props: {
@@ -9,7 +9,13 @@ export function Plancher(props: {
   return (
     <>
       <Modal.Header closeButton>
-        <Modal.Title>Plancher</Modal.Title>
+        <Modal.Title>
+          <Image
+            src={require("../images/floor.png").default}
+            style={{ width: 30, marginTop: -5, marginRight: "1rem" }}
+          />
+          Plancher
+        </Modal.Title>
       </Modal.Header>
       <Modal.Body>
         <Form style={{ marginTop: "1rem" }}>
