@@ -6,7 +6,6 @@ import {
   Card,
   CardDeck,
   Form,
-  InputGroup,
   FormControl,
   Spinner,
   Navbar,
@@ -24,17 +23,18 @@ import { Plancher } from "./modals/plancher"
 import { Ventilation } from "./modals/ventilation"
 import { Vitrage } from "./modals/vitrage"
 import { Dot } from "./Dot"
+import { useAppState } from "./useAppState"
 
 import "./App.css"
 
 function App() {
-  const [address, setAddress] = useState<
-    mapkit.SearchAutocompleteResult | undefined
-  >(undefined)
-
-  const [logementType, setLogementType] = useState<
-    "maison" | "appartement" | null
-  >(null)
+  const [
+    [address, setAddress],
+    [logementType, setLogementType],
+    [nbHabitant, setNbHabitant],
+    mursState,
+    plancherState,
+  ] = useAppState()
 
   const [modal, setModal] = useState<
     | "comment-ca-marche"
@@ -121,23 +121,18 @@ function App() {
                   ) : (
                     <AddressInput onSelect={setAddress} />
                   )}
-                  <Form.Row>
-                    <Form.Group as={Col}>
-                      <Form.Label>Surface habitable</Form.Label>
-                      <InputGroup>
-                        <FormControl type="number" aria-describedby="m2" />
-                        <InputGroup.Append>
-                          <InputGroup.Text id="m2">m²</InputGroup.Text>
-                        </InputGroup.Append>
-                      </InputGroup>
-                    </Form.Group>
-                    <Form.Group as={Col}>
-                      <Form.Label>Année de construction</Form.Label>
-                      <InputGroup>
-                        <FormControl type="number" />
-                      </InputGroup>
-                    </Form.Group>
-                  </Form.Row>
+                  <Form.Group>
+                    <Form.Label>
+                      Nombre de personnes dans le logement
+                    </Form.Label>
+                    <FormControl
+                      type="number"
+                      value={
+                        typeof nbHabitant === "undefined" ? "" : nbHabitant
+                      }
+                      onChange={(e) => setNbHabitant(parseInt(e.target.value))}
+                    />
+                  </Form.Group>
                 </Form>
               </Card.Body>
             </Card>
@@ -198,9 +193,9 @@ function App() {
         ) : modalToShow === "chauffage" ? (
           <Chauffage />
         ) : modalToShow === "murs" ? (
-          <Murs />
+          <Murs state={mursState} />
         ) : modalToShow === "plancher" ? (
-          <Plancher />
+          <Plancher state={plancherState} />
         ) : modalToShow === "ventilation" ? (
           <Ventilation />
         ) : modalToShow === "vitrage" ? (
