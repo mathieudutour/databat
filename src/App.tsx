@@ -148,7 +148,33 @@ function App() {
                   droite), plus les recommendations seront précises et
                   appropriées.
                 </Card.Subtitle>
-                <Spinner animation="border" role="status">
+                <Card style={{ marginTop: "1rem" }}>
+                  <Card.Body>
+                    <Card.Title>
+                      <Image
+                        src={require("./images/window.png").default}
+                        style={{
+                          width: 20,
+                          marginTop: -3,
+                          marginRight: "0.5rem",
+                        }}
+                      />
+                      Changement des menuiseries
+                    </Card.Title>
+                    <Card.Text>Bla bla bla</Card.Text>
+                    <Row>
+                      <Col>💰 Entre 5000 et 10000 €</Col>
+                      <Col>💸 Jusqu'à 20% d'énergie consommée</Col>
+                    </Row>
+                    <Card.Link href="#">Aides disponibles</Card.Link>
+                    <Card.Link href="#">Artisans RGE</Card.Link>
+                  </Card.Body>
+                </Card>
+                <Spinner
+                  animation="border"
+                  role="status"
+                  style={{ marginTop: "1rem" }}
+                >
                   <span className="sr-only">Loading...</span>
                 </Spinner>
               </Card.Body>
