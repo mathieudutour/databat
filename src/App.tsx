@@ -160,20 +160,38 @@ function App() {
                   alt="maison"
                   fluid
                 />
-                <Dot left="20%" top="21%" onClick={() => setModal("toiture")} />
-                <Dot left="5%" top="80%" onClick={() => setModal("murs")} />
                 <Dot
+                  title="Toîture"
+                  left="20%"
+                  top="21%"
+                  onClick={() => setModal("toiture")}
+                />
+                <Dot
+                  title="Murs"
+                  left="5%"
+                  top="80%"
+                  onClick={() => setModal("murs")}
+                />
+                <Dot
+                  title="Plancher"
                   left="44%"
                   top="71%"
                   onClick={() => setModal("plancher")}
                 />
                 <Dot
+                  title="Chauffage"
                   left="12.5%"
                   top="68%"
                   onClick={() => setModal("chauffage")}
                 />
-                <Dot left="71%" top="65%" onClick={() => setModal("vitrage")} />
                 <Dot
+                  title="Vitrage"
+                  left="71%"
+                  top="65%"
+                  onClick={() => setModal("vitrage")}
+                />
+                <Dot
+                  title="Ventilation"
                   left="61%"
                   top="25%"
                   onClick={() => setModal("ventilation")}
