@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useState, useRef, useEffect } from "react"
 import {
   Container,
   Row,
@@ -18,6 +18,11 @@ import { AddressInput } from "./AddressInput"
 import { QuiSommesNous } from "./modals/qui-sommes-nous"
 import { CommentCaMarche } from "./modals/comment-ca-marche"
 import { Toiture } from "./modals/toiture"
+import { Chauffage } from "./modals/chauffage"
+import { Murs } from "./modals/murs"
+import { Plancher } from "./modals/plancher"
+import { Ventilation } from "./modals/ventilation"
+import { Vitrage } from "./modals/vitrage"
 import { Dot } from "./Dot"
 
 import "./App.css"
@@ -38,8 +43,19 @@ function App() {
     | "murs"
     | "plancher"
     | "chauffage"
+    | "vitrage"
+    | "ventilation"
     | null
   >(null)
+  const latestModal = useRef(modal)
+
+  useEffect(() => {
+    if (modal) {
+      latestModal.current = modal
+    }
+  }, [modal])
+
+  const modalToShow = modal || latestModal
 
   const closeModal = () => setModal(null)
 
@@ -150,19 +166,46 @@ function App() {
                   fluid
                 />
                 <Dot left="20%" top="21%" onClick={() => setModal("toiture")} />
+                <Dot left="5%" top="80%" onClick={() => setModal("murs")} />
+                <Dot
+                  left="44%"
+                  top="71%"
+                  onClick={() => setModal("plancher")}
+                />
+                <Dot
+                  left="12.5%"
+                  top="68%"
+                  onClick={() => setModal("chauffage")}
+                />
+                <Dot left="71%" top="65%" onClick={() => setModal("vitrage")} />
+                <Dot
+                  left="61%"
+                  top="25%"
+                  onClick={() => setModal("ventilation")}
+                />
               </div>
             )}
           </Col>
         </Row>
       </Container>
       <Modal show={modal !== null} onHide={closeModal} size="lg">
-        {modal === "comment-ca-marche" ? (
+        {modalToShow === "comment-ca-marche" ? (
           <CommentCaMarche />
-        ) : modal === "toiture" ? (
-          <Toiture />
-        ) : (
+        ) : modalToShow === "qui-sommes-nous" ? (
           <QuiSommesNous />
-        )}
+        ) : modalToShow === "toiture" ? (
+          <Toiture />
+        ) : modalToShow === "chauffage" ? (
+          <Chauffage />
+        ) : modalToShow === "murs" ? (
+          <Murs />
+        ) : modalToShow === "plancher" ? (
+          <Plancher />
+        ) : modalToShow === "ventilation" ? (
+          <Ventilation />
+        ) : modalToShow === "vitrage" ? (
+          <Vitrage />
+        ) : null}
       </Modal>
     </div>
   )
