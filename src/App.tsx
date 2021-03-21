@@ -121,17 +121,21 @@ function App() {
                   ) : (
                     <AddressInput onSelect={setAddress} />
                   )}
-                  <Form.Group>
-                    <Form.Label>
+                  <Form.Group as={Row}>
+                    <Form.Label column>
                       Nombre de personnes dans le logement
                     </Form.Label>
-                    <FormControl
-                      type="number"
-                      value={
-                        typeof nbHabitant === "undefined" ? "" : nbHabitant
-                      }
-                      onChange={(e) => setNbHabitant(parseInt(e.target.value))}
-                    />
+                    <Col sm="3">
+                      <FormControl
+                        type="number"
+                        value={
+                          typeof nbHabitant === "undefined" ? "" : nbHabitant
+                        }
+                        onChange={(e) =>
+                          setNbHabitant(parseInt(e.target.value))
+                        }
+                      />
+                    </Col>
                   </Form.Group>
                 </Form>
               </Card.Body>
