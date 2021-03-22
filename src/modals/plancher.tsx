@@ -4,7 +4,12 @@ import type { usePlancherState } from "../useAppState"
 export function Plancher(props: {
   state: ReturnType<typeof usePlancherState>
 }) {
-  const [[surface, setSurface]] = props.state
+  const [
+    [surface, setSurface],
+    [isolated, setIsolated],
+    [isolantWidth, setIsolantWidth],
+    [videSanitaire, setVideSanitaire],
+  ] = props.state
 
   return (
     <>
@@ -33,6 +38,55 @@ export function Plancher(props: {
               </InputGroup.Append>
             </InputGroup>
           </Form.Group>
+          <Form.Group>
+            <Form.Label>
+              Le plancher bas de votre logement est-il isolé ?
+            </Form.Label>
+            <Form.Control
+              as="select"
+              custom
+              value={isolated as any}
+              onChange={(e) => setIsolated(e.target.value as any)}
+            >
+              <option value={undefined}>Je ne sais pas</option>
+              <option value="true">Oui</option>
+              <option value="false">Non</option>
+            </Form.Control>
+          </Form.Group>
+          {typeof isolated !== "undefined" ? (
+            isolated ? (
+              <Form.Group>
+                <Form.Label>Qu’elle est l’épaisseur de l’isolant ?</Form.Label>
+                <Form.Control
+                  as="select"
+                  custom
+                  value={isolantWidth}
+                  onChange={(e) => setIsolantWidth(e.target.value as any)}
+                >
+                  <option value={undefined}>Je ne sais pas</option>
+                  <option value="0-10">0 à 10 cm</option>
+                  <option value="10-30">10 à 30cm</option>
+                  <option value="30+">Supérieur à 30cm</option>
+                </Form.Control>
+              </Form.Group>
+            ) : (
+              <Form.Group>
+                <Form.Label>
+                  Le plancher bas de votre logement est-il isolé ?
+                </Form.Label>
+                <Form.Control
+                  as="select"
+                  custom
+                  value={videSanitaire as any}
+                  onChange={(e) => setVideSanitaire(e.target.value as any)}
+                >
+                  <option value={undefined}>Je ne sais pas</option>
+                  <option value="true">Oui</option>
+                  <option value="false">Non</option>
+                </Form.Control>
+              </Form.Group>
+            )
+          ) : null}
         </Form>
       </Modal.Body>
     </>

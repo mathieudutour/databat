@@ -34,8 +34,12 @@ function App() {
     [address, setAddress],
     [logementType, setLogementType],
     [nbHabitant, setNbHabitant],
+    toitureState,
+    ventilationState,
+    chauffageState,
     mursState,
     plancherState,
+    vitrageState,
   ] = useAppState()
 
   const [modal, setModal] = useState<
@@ -286,17 +290,17 @@ function App() {
         ) : modalToShow === "qui-sommes-nous" ? (
           <QuiSommesNous />
         ) : modalToShow === "toiture" ? (
-          <Toiture />
+          <Toiture state={toitureState} />
         ) : modalToShow === "chauffage" ? (
-          <Chauffage />
+          <Chauffage state={chauffageState} />
         ) : modalToShow === "murs" ? (
           <Murs state={mursState} />
         ) : modalToShow === "plancher" ? (
           <Plancher state={plancherState} />
         ) : modalToShow === "ventilation" ? (
-          <Ventilation />
+          <Ventilation state={ventilationState} />
         ) : modalToShow === "vitrage" ? (
-          <Vitrage />
+          <Vitrage state={vitrageState} />
         ) : null}
       </Modal>
     </div>

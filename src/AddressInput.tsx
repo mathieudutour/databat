@@ -47,6 +47,9 @@ export function AddressInput({
   )
 
   useEffect(() => {
+    if (typeof mapkit === "undefined") {
+      return
+    }
     mapkit.init({
       authorizationCallback: function (done) {
         done(tokenID)
