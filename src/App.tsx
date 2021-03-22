@@ -14,6 +14,7 @@ import {
   Image,
 } from "react-bootstrap"
 import { AddressInput } from "./AddressInput"
+import { Onboarding } from "./modals/onboarding"
 import { QuiSommesNous } from "./modals/qui-sommes-nous"
 import { CommentCaMarche } from "./modals/comment-ca-marche"
 import { Toiture } from "./modals/toiture"
@@ -29,6 +30,7 @@ import "./App.css"
 
 function App() {
   const [
+    [showOnboarding, hideOnboarding],
     [address, setAddress],
     [logementType, setLogementType],
     [nbHabitant, setNbHabitant],
@@ -37,6 +39,7 @@ function App() {
   ] = useAppState()
 
   const [modal, setModal] = useState<
+    | "onboarding"
     | "comment-ca-marche"
     | "qui-sommes-nous"
     | "toiture"
@@ -46,7 +49,7 @@ function App() {
     | "vitrage"
     | "ventilation"
     | null
-  >(null)
+  >(showOnboarding ? "onboarding" : null)
   const latestModal = useRef(modal)
 
   useEffect(() => {
@@ -57,7 +60,12 @@ function App() {
 
   const modalToShow = modal || latestModal
 
-  const closeModal = () => setModal(null)
+  const closeModal = () => {
+    if (modal === "onboarding") {
+      hideOnboarding()
+    }
+    setModal(null)
+  }
 
   return (
     <div className="App">
@@ -262,7 +270,9 @@ function App() {
         <p>Sources : ADEME, données Tremi ADEME, données Simul’Aid€s</p>
       </footer>
       <Modal show={modal !== null} onHide={closeModal} size="lg">
-        {modalToShow === "comment-ca-marche" ? (
+        {modalToShow === "onboarding" ? (
+          <Onboarding onClose={closeModal} />
+        ) : modalToShow === "comment-ca-marche" ? (
           <CommentCaMarche />
         ) : modalToShow === "qui-sommes-nous" ? (
           <QuiSommesNous />

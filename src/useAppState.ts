@@ -4,6 +4,10 @@ const storage: { [key: string]: any } =
   typeof localStorage !== "undefined" ? localStorage : {}
 
 export function useAppState() {
+  const [showOnboarding, _setShowOnboarding] = useState<boolean>(
+    !storage.databat_done_onboarding
+  )
+
   const [address, _setAddress] = useState<
     mapkit.SearchAutocompleteResult | undefined
   >(storage.databat_address ? JSON.parse(storage.databat_address) : undefined)
@@ -17,6 +21,11 @@ export function useAppState() {
       ? parseInt(storage.databat_nbHabitant)
       : undefined
   )
+
+  const hideOnboarding = useCallback(() => {
+    _setShowOnboarding(false)
+    storage.databat_done_onboarding = "true"
+  }, [_setShowOnboarding])
 
   const setAddress = useCallback(
     (address: mapkit.SearchAutocompleteResult | undefined) => {
@@ -61,6 +70,7 @@ export function useAppState() {
   const plancherState = usePlancherState()
 
   return [
+    [showOnboarding, hideOnboarding],
     [address, setAddress],
     [logementType, setLogementType],
     [nbHabitant, setNbHabitant],

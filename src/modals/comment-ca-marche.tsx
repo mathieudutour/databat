@@ -1,4 +1,4 @@
-import { Modal, Row, Col, Image } from "react-bootstrap"
+import { Modal, Image } from "react-bootstrap"
 
 export function CommentCaMarche() {
   return (
@@ -7,44 +7,38 @@ export function CommentCaMarche() {
         <Modal.Title>Comment ça marche?</Modal.Title>
       </Modal.Header>
       <Modal.Body>
+        <h3>Prédictions des montants et de la satisfaction</h3>
+        <Image
+          src={require("../images/prediction.png").default}
+          alt="Flux thermiques"
+          fluid
+        />
         <p>
-          Vous envisagez des travaux mais vous ne savez pas par où commencer?
-          Vous souhaitez améliorer le confort de votre habitation?
+          Données utilisées : Enquête Tremi. Ménages ayant réalisés des travaux
+          entre 2014 et 2016.
         </p>
-        <p>FrEnerG vous accompagne dans votre prise de décision.</p>
         <p>
-          En quelques clics, découvrez les meilleures solutions selon votre
-          profil et avancez sereinement dans vos projets de rénovation.
+          Modèles prédictifs utilisés : arbres de décisions CART et Random
+          Forest.
         </p>
-        <h3>Les déperditions thermiques</h3>
-        <Row>
-          <Col>
-            <p>
-              Le flux thermique se propage dans tous les sens du chaud vers le
-              froid.
-            </p>
-            <p>
-              Il est donc nécessaire d’agir sur l’enveloppe du bâti pour limiter
-              ces déperditions.
-            </p>
-          </Col>
-          <Col>
-            <Image
-              src={require("../images/flux.png").default}
-              alt="Flux thermiques"
-              fluid
-            />
-          </Col>
-        </Row>
-        <h3>Une démarche simple en 3 étapes</h3>
-        <Row>
-          <Col>Je renseigne les caractéristiques de mon logement.</Col>
-          <Col>
-            Je découvre les meilleures solutions pour améliorer mon logement,
-            selon mon budget.
-          </Col>
-          <Col>Je passe à l'action!</Col>
-        </Row>
+        <h3>Exemple d’arbres CART</h3>
+        <p>
+          Prédiction du confort obtenu ᐧ Travaux réalisés : rénovation et
+          isolation de la toiture
+        </p>
+        <Image
+          src={require("../images/decision-tree.png").default}
+          alt="Flux thermiques"
+          fluid
+        />
+        <p className="text-muted">
+          Note de lecture : On commence en haut de l'arbre. Si plus de la moitié
+          de la toiture est isolée (Oui) on va à gauche, sinon à droite (Non).
+          Admettons que plus de la moitié ait été isolée, on regarde alors
+          l'épaisseur de l'isolant. Si celle-ci est supérieure à 10 cm on va à
+          gauche : un confort de 1 est prédit (« Très satisfait »). Sinon on va
+          à droite et on regarde le type d'émission du chauffage, etc.
+        </p>
       </Modal.Body>
     </>
   )
