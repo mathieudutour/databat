@@ -186,6 +186,15 @@ function App() {
                   <span className="sr-only">Loading...</span>
                 </Spinner>
               </Card.Body>
+              <Card.Footer>
+                <Card.Link
+                  href="#"
+                  className="text-muted"
+                  onClick={() => setModal("comment-ca-marche")}
+                >
+                  Comment les recommendations sont déterminées?
+                </Card.Link>
+              </Card.Footer>
             </Card>
           </Col>
           <Col>
