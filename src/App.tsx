@@ -7,13 +7,16 @@ import {
   CardDeck,
   Form,
   FormControl,
-  Spinner,
   Navbar,
   Nav,
   Modal,
   Image,
 } from "react-bootstrap"
+
 import { AddressInput } from "./AddressInput"
+import { Dot } from "./Dot"
+import { useAppState } from "./useAppState"
+
 import { Onboarding } from "./modals/onboarding"
 import { QuiSommesNous } from "./modals/qui-sommes-nous"
 import { CommentCaMarche } from "./modals/comment-ca-marche"
@@ -23,12 +26,16 @@ import { Murs } from "./modals/murs"
 import { Plancher } from "./modals/plancher"
 import { Ventilation } from "./modals/ventilation"
 import { Vitrage } from "./modals/vitrage"
-import { Dot } from "./Dot"
-import { useAppState } from "./useAppState"
+
+import { ChangementMenuiseries } from "./recommendations/changement-menuiseries"
+import { IsolationToiture } from "./recommendations/isolation-toit"
+import { PompeChaleur } from "./recommendations/pompe-chaleur"
+import { IsolationMurs } from "./recommendations/isolation-murs"
 
 import "./App.css"
 
 function App() {
+  const state = useAppState()
   const [
     [showOnboarding, hideOnboarding],
     [address, setAddress],
@@ -40,7 +47,7 @@ function App() {
     mursState,
     plancherState,
     vitrageState,
-  ] = useAppState()
+  ] = state
 
   const [modal, setModal] = useState<
     | "onboarding"
@@ -160,35 +167,10 @@ function App() {
                   droite), plus les recommendations seront précises et
                   appropriées.
                 </Card.Subtitle>
-                <Card style={{ marginTop: "1rem" }}>
-                  <Card.Body>
-                    <Card.Title>
-                      <Image
-                        src={require("./images/window.png").default}
-                        style={{
-                          width: 20,
-                          marginTop: -3,
-                          marginRight: "0.5rem",
-                        }}
-                      />
-                      Changement des menuiseries
-                    </Card.Title>
-                    <Card.Text>Bla bla bla</Card.Text>
-                    <Row>
-                      <Col>💰 Entre 5000 et 10000 €</Col>
-                      <Col>💸 Jusqu'à 20% d'énergie consommée</Col>
-                    </Row>
-                    <Card.Link href="#">Aides disponibles</Card.Link>
-                    <Card.Link href="#">Artisans RGE</Card.Link>
-                  </Card.Body>
-                </Card>
-                <Spinner
-                  animation="border"
-                  role="status"
-                  style={{ marginTop: "1rem" }}
-                >
-                  <span className="sr-only">Loading...</span>
-                </Spinner>
+                <ChangementMenuiseries state={state} />
+                <IsolationToiture state={state} />
+                <PompeChaleur state={state} />
+                <IsolationMurs state={state} />
               </Card.Body>
               <Card.Footer>
                 <Card.Link
