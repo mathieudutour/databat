@@ -1,5 +1,6 @@
 # Get the artisans RGE around a location
-curl --request GET --url 'https://koumoul.com/s/data-fair/api/v1/datasets/rge-2/lines?format=json&q_mode=simple&bbox=5.5,48.9,5.6,49.0&select=SIRET%2CNom_de_l'\''entreprise%2CAdresse%2CCode_postal%2CVille%2CDomaine_de_travaux%2CLatitude%2CLongitude'
+curl --request GET --url 'https://koumoul.com/s/data-fair/api/v1/datasets/rge-historique/lines?format=json&q_mode=simple&bbox=5.5,48.9,5.6,49.0&select=site_internet%2Cemail%2Cnom_entreprise%2Ctelephone%2Cnom_qualification%2Ctraitement_date_fin&code_qualification_in=7141D7'
+'https://koumoul.com/s/data-fair/api/v1/datasets/liste-des-entreprises-rge/lines?format=json&q_mode=simple&bbox=5.5,48.9,5.6,49.0&select=SIRET%2CRAISON_SOCIALE'
 
 # Get the cost of a specific work item
 curl --request GET \

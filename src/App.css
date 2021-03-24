@@ -6,3 +6,30 @@
 .logement-type-active {
   border-color: blue;
 }
+
+.star-ratings-css {
+  display: inline-block;
+  unicode-bidi: bidi-override;
+  color: #c5c5c5;
+  font-size: 13px;
+  height: 19px;
+  width: 65.7px;
+  position: relative;
+  margin-top: -2px;
+}
+
+.star-ratings-css-top {
+  color: #ffb400;
+  padding: 0;
+  position: absolute;
+  z-index: 1;
+  display: block;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+}
+.star-ratings-css-bottom {
+  padding: 0;
+  display: block;
+  z-index: 0;
+}

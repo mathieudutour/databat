@@ -26,6 +26,7 @@ import { Murs } from "./modals/murs"
 import { Plancher } from "./modals/plancher"
 import { Ventilation } from "./modals/ventilation"
 import { Vitrage } from "./modals/vitrage"
+import { ArtisansRGE, Artisan } from "./modals/artisans-rge"
 
 import { ChangementMenuiseries } from "./recommendations/changement-menuiseries"
 import { IsolationToiture } from "./recommendations/isolation-toit"
@@ -59,9 +60,13 @@ function App() {
     | "chauffage"
     | "vitrage"
     | "ventilation"
+    | "artisans"
+    | "aides"
     | null
   >(showOnboarding ? "onboarding" : null)
   const latestModal = useRef(modal)
+
+  const [modalArgs, setModalArgs] = useState<any>({})
 
   useEffect(() => {
     if (modal) {
@@ -76,6 +81,11 @@ function App() {
       hideOnboarding()
     }
     setModal(null)
+  }
+
+  const openArtisans = (args: { artisans: Artisan[]; title: string }) => {
+    setModalArgs(args)
+    setModal("artisans")
   }
 
   return (
@@ -167,10 +177,13 @@ function App() {
                   droite), plus les recommendations seront précises et
                   appropriées.
                 </Card.Subtitle>
-                <ChangementMenuiseries state={state} />
-                <IsolationToiture state={state} />
-                <PompeChaleur state={state} />
-                <IsolationMurs state={state} />
+                <ChangementMenuiseries
+                  state={state}
+                  openArtisans={openArtisans}
+                />
+                <IsolationToiture state={state} openArtisans={openArtisans} />
+                <PompeChaleur state={state} openArtisans={openArtisans} />
+                <IsolationMurs state={state} openArtisans={openArtisans} />
               </Card.Body>
               <Card.Footer>
                 <Card.Link
@@ -283,6 +296,8 @@ function App() {
           <Ventilation state={ventilationState} />
         ) : modalToShow === "vitrage" ? (
           <Vitrage state={vitrageState} />
+        ) : modalToShow === "artisans" ? (
+          <ArtisansRGE {...modalArgs} />
         ) : null}
       </Modal>
     </div>
