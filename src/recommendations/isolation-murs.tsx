@@ -29,9 +29,9 @@ export function IsolationMurs(props: {
           <Card.Text>
             Avec une maison bien isolée vous réduisez vos factures d’énergie de
             manière conséquente. De plus vous augmentez votre confort de vie
-            hiver comme été, l’isolation permet également d’améliorer
-            l’isolation acoustique de votre maison donc vous êtes moins sujets
-            aux nuisances sonores.
+            hiver comme été, l’isolation permet également d’améliorer le confort
+            acoustique de votre maison donc vous êtes moins sujets aux nuisances
+            sonores.
           </Card.Text>
           <Row>
             <Col>💰 Environ 120€/m2</Col>
