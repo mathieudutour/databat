@@ -203,6 +203,12 @@ function App() {
                   openArtisans={openArtisans}
                   openAides={openAides}
                 />
+                <Card.Text style={{ marginTop: "1rem" }} className="text-muted">
+                  Sachez que l’idéal pour avoir une maison avec une consommation
+                  minimale d’énergie est de privilégier une rénovation globale
+                  en agissant à la fois sur l’enveloppe mais également sur la
+                  production de chauffage et le système de ventilation.
+                </Card.Text>
               </Card.Body>
               <Card.Footer>
                 <Card.Link

@@ -1,4 +1,4 @@
-import { Modal } from "react-bootstrap"
+import { Modal, Button } from "react-bootstrap"
 
 export type Aide = {
   upTo?: string
@@ -59,6 +59,15 @@ export function Aides(props: { aides: Aide[]; title: string }) {
           )
         )}
       </Modal.Body>
+      <Modal.Footer>
+        <Button
+          variant="primary"
+          href="https://www.faire.gouv.fr/trouver-un-conseiller"
+          target="__blank"
+        >
+          Contacter un Conseiller
+        </Button>
+      </Modal.Footer>
     </>
   )
 }

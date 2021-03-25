@@ -35,8 +35,9 @@ export function IsolationToiture(props: {
             {title}
           </Card.Title>
           <Card.Text>
-            Laines minérales ou insufflation de ouates de cellulose. TODO:
-            pourquoi c'est trop bien
+            Isoler ses combles c’est faire le choix de d’améliorer le premier
+            poste de déperdition dans sa maison. Vous réduisez ainsi vos
+            consommations énergétique et votre confort est amélioré.
           </Card.Text>
           <Row>
             <Col>💰 Entre 2000 et 3000€</Col>

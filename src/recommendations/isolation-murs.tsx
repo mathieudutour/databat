@@ -26,7 +26,13 @@ export function IsolationMurs(props: {
             />
             Isolation par l'extérieur
           </Card.Title>
-          <Card.Text>TODO: pourquoi c'est trop bien</Card.Text>
+          <Card.Text>
+            Avec une maison bien isolée vous réduisez vos factures d’énergie de
+            manière conséquente. De plus vous augmentez votre confort de vie
+            hiver comme été, l’isolation permet également d’améliorer
+            l’isolation acoustique de votre maison donc vous êtes moins sujets
+            aux nuisances sonores.
+          </Card.Text>
           <Row>
             <Col>💰 Environ 120€/m2</Col>
             <Col>💸 Jusqu'à 25% d'énergie consommée</Col>

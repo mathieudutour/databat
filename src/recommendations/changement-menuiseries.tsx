@@ -26,7 +26,12 @@ export function ChangementMenuiseries(props: {
             />
             Changement des menuiseries
           </Card.Title>
-          <Card.Text>TODO: pourquoi c'est trop bien</Card.Text>
+          <Card.Text>
+            En changeant vos fenêtres vous améliorer le confort thermique et
+            acoustique de votre habitation et réduisez également la possible
+            condensation du logement. Vous améliorez également l’esthétique de
+            vos façades et votre maison prend potentiellement de la valeur.
+          </Card.Text>
           <Row>
             <Col>💰 Entre 5000 et 10000€</Col>
             <Col>💸 Jusqu'à 20% d'énergie consommée</Col>

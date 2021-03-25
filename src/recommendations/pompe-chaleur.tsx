@@ -36,7 +36,12 @@ export function PompeChaleur(props: {
             />
             Installation d'une pompe à chaleur
           </Card.Title>
-          <Card.Text>TODO: pourquoi c'est trop bien</Card.Text>
+          <Card.Text>
+            Mettre une pompe à chaleur c’est faire le choix d’une énergie propre
+            et renouvelable en puisant les calories nécessaires à la production
+            de chaleur dans l’air ou l’eau. Vous faites également des économies
+            qui peuvent être conséquente sur une facture annuel de chauffage.
+          </Card.Text>
           <Row>
             <Col>💰 Entre 10000 et 16000€ €</Col>
             <Col>💸 Jusqu'à 45% d'énergie consommée</Col>
