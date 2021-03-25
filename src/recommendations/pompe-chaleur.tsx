@@ -1,10 +1,12 @@
 import { Card, Image, Row, Col } from "react-bootstrap"
 import type { useAppState } from "../useAppState"
 import type { Artisan } from "../modals/artisans-rge"
+import type { Aide } from "../modals/aides"
 
 export function PompeChaleur(props: {
   state: ReturnType<typeof useAppState>
   openArtisans: (args: { artisans: Artisan[]; title: string }) => void
+  openAides: (args: { aides: Aide[]; title: string }) => void
 }) {
   const chauffageState = props.state[6]
   const [
@@ -36,10 +38,22 @@ export function PompeChaleur(props: {
           </Card.Title>
           <Card.Text>TODO: pourquoi c'est trop bien</Card.Text>
           <Row>
-            <Col>💰 Entre 5000 et 10000 €</Col>
-            <Col>💸 Jusqu'à 20% d'énergie consommée</Col>
+            <Col>💰 Entre 10000 et 16000€ €</Col>
+            <Col>💸 Jusqu'à 45% d'énergie consommée</Col>
           </Row>
-          <Card.Link href="#">Aides disponibles</Card.Link>
+          <Card.Link
+            href="#"
+            onClick={() =>
+              getAides().then((aides) =>
+                props.openAides({
+                  aides,
+                  title: "Changement des menuiseries",
+                })
+              )
+            }
+          >
+            Aides disponibles
+          </Card.Link>
           <Card.Link
             href="#"
             onClick={() =>
@@ -72,6 +86,18 @@ async function getArtisans(): Promise<Artisan[]> {
       rating: 4.3,
       website: "http://www.sarlphilippelavigne.com/",
       email: "sarlphilippelavigne@wanadoo.fr",
+    },
+  ]
+}
+
+async function getAides(): Promise<Aide[]> {
+  return await [
+    {
+      upTo: "4000€",
+      name: "MaPrimeRenov'",
+      description: "Selon éligibilité, si réalisé par un artisan RGE",
+      phone: "0808800700",
+      website: "https://www.maprimerenov.gouv.fr",
     },
   ]
 }

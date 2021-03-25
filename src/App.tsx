@@ -27,6 +27,7 @@ import { Plancher } from "./modals/plancher"
 import { Ventilation } from "./modals/ventilation"
 import { Vitrage } from "./modals/vitrage"
 import { ArtisansRGE, Artisan } from "./modals/artisans-rge"
+import { Aides, Aide } from "./modals/aides"
 
 import { ChangementMenuiseries } from "./recommendations/changement-menuiseries"
 import { IsolationToiture } from "./recommendations/isolation-toit"
@@ -86,6 +87,11 @@ function App() {
   const openArtisans = (args: { artisans: Artisan[]; title: string }) => {
     setModalArgs(args)
     setModal("artisans")
+  }
+
+  const openAides = (args: { aides: Aide[]; title: string }) => {
+    setModalArgs(args)
+    setModal("aides")
   }
 
   return (
@@ -180,10 +186,23 @@ function App() {
                 <ChangementMenuiseries
                   state={state}
                   openArtisans={openArtisans}
+                  openAides={openAides}
                 />
-                <IsolationToiture state={state} openArtisans={openArtisans} />
-                <PompeChaleur state={state} openArtisans={openArtisans} />
-                <IsolationMurs state={state} openArtisans={openArtisans} />
+                <IsolationToiture
+                  state={state}
+                  openArtisans={openArtisans}
+                  openAides={openAides}
+                />
+                <PompeChaleur
+                  state={state}
+                  openArtisans={openArtisans}
+                  openAides={openAides}
+                />
+                <IsolationMurs
+                  state={state}
+                  openArtisans={openArtisans}
+                  openAides={openAides}
+                />
               </Card.Body>
               <Card.Footer>
                 <Card.Link
@@ -298,6 +317,8 @@ function App() {
           <Vitrage state={vitrageState} />
         ) : modalToShow === "artisans" ? (
           <ArtisansRGE {...modalArgs} />
+        ) : modalToShow === "aides" ? (
+          <Aides {...modalArgs} />
         ) : null}
       </Modal>
     </div>

@@ -1,10 +1,12 @@
 import { Card, Image, Row, Col } from "react-bootstrap"
 import type { useAppState } from "../useAppState"
 import type { Artisan } from "../modals/artisans-rge"
+import type { Aide } from "../modals/aides"
 
 export function ChangementMenuiseries(props: {
   state: ReturnType<typeof useAppState>
   openArtisans: (args: { artisans: Artisan[]; title: string }) => void
+  openAides: (args: { aides: Aide[]; title: string }) => void
 }) {
   const vitrageState = props.state[9]
   const doubleVitrage = vitrageState[1][0]
@@ -26,10 +28,22 @@ export function ChangementMenuiseries(props: {
           </Card.Title>
           <Card.Text>TODO: pourquoi c'est trop bien</Card.Text>
           <Row>
-            <Col>💰 Entre 5000 et 10000 €</Col>
+            <Col>💰 Entre 5000 et 10000€</Col>
             <Col>💸 Jusqu'à 20% d'énergie consommée</Col>
           </Row>
-          <Card.Link href="#">Aides disponibles</Card.Link>
+          <Card.Link
+            href="#"
+            onClick={() =>
+              getAides().then((aides) =>
+                props.openAides({
+                  aides,
+                  title: "Changement des menuiseries",
+                })
+              )
+            }
+          >
+            Aides disponibles
+          </Card.Link>
           <Card.Link
             href="#"
             onClick={() =>
@@ -71,6 +85,18 @@ async function getArtisans(): Promise<Artisan[]> {
       rating: 4.2,
       website: "http://www.menuiserie-litaudon.fr/",
       email: "litaudon.arnaud@orange.fr",
+    },
+  ]
+}
+
+async function getAides(): Promise<Aide[]> {
+  return await [
+    {
+      upTo: "100€ par équipement",
+      name: "MaPrimeRenov'",
+      description: "Selon éligibilité, si réalisé par un artisan RGE",
+      phone: "0808800700",
+      website: "https://www.maprimerenov.gouv.fr",
     },
   ]
 }
