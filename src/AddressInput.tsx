@@ -60,7 +60,7 @@ export function AddressInput({
   return (
     <Form.Group>
       <Form.Control
-        placeholder="Entrez votre addresse..."
+        placeholder="Entrez votre adresse..."
         onChange={onChangeAddress}
         value={address}
       />

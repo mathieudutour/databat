@@ -11,7 +11,7 @@ export function ChangementMenuiseries(props: {
   const vitrageState = props.state[9]
   const doubleVitrage = vitrageState[1][0]
 
-  if (!doubleVitrage) {
+  if (doubleVitrage === false) {
     return (
       <Card style={{ marginTop: "1rem" }}>
         <Card.Body>
