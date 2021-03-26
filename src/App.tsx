@@ -177,10 +177,10 @@ function App() {
             </Card>
             <Card style={{ marginTop: "1rem" }}>
               <Card.Body>
-                <Card.Title>Recommendations</Card.Title>
+                <Card.Title>Recommandations</Card.Title>
                 <Card.Subtitle className="mb-2 text-muted">
                   Plus vous renseignerez d'informations (sur l'illustration à
-                  droite), plus les recommendations seront précises et
+                  droite), plus les recommandations seront précises et
                   appropriées.
                 </Card.Subtitle>
                 <ChangementMenuiseries
@@ -216,7 +216,7 @@ function App() {
                   className="text-muted"
                   onClick={() => setModal("comment-ca-marche")}
                 >
-                  Comment les recommendations sont déterminées?
+                  Comment les recommandations sont déterminées?
                 </Card.Link>
               </Card.Footer>
             </Card>
@@ -277,7 +277,7 @@ function App() {
         style={{ marginTop: "3rem", padding: "2rem" }}
       >
         <p>
-          Les recommendations fournies par FrEnerG sont à vertue pédagogique et
+          Les recommandations fournies par FrEnerG sont à vertue pédagogique et
           ne remplacent en aucun cas l'expertise des conseillers{" "}
           <a
             href="https://www.faire.gouv.fr/"
