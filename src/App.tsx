@@ -98,7 +98,14 @@ function App() {
     <div className="App">
       <Navbar bg="light">
         <Container>
-          <Navbar.Brand href="#home">FrEnerG</Navbar.Brand>
+          <Navbar.Brand href="#home">
+            <img
+              src={require("./images/FrEnerG_Logo.png").default}
+              height="30"
+              className="d-inline-block align-top"
+              alt="FrEnerG"
+            />
+          </Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse
             className="justify-content-end"
